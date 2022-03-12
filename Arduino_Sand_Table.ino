@@ -35,11 +35,9 @@ void loop()
 {
   for(int i = 0 ; i < 100 ; i++ ){
     yPlusMove();
-    xPlusMove();
   }
   for(int i = 0 ; i < 100 ; i++ ){
-    yMinusMove();
-    xMinusMove();
+    yMinusMove();      
   }                                                          
 }
 void Motor1TurnLeft(){
