@@ -13,6 +13,7 @@ int ENB2=13;
 
 void setup()
 {
+ Serial.begin(9600);
  pinMode(ENA1,OUTPUT);
  pinMode(ENB1,OUTPUT);
  pinMode(IN1_1,OUTPUT);
@@ -33,12 +34,22 @@ void setup()
 
 void loop()
 {
-  for(int i = 0 ; i < 100 ; i++ ){
-    yPlusMove();
-  }
-  for(int i = 0 ; i < 100 ; i++ ){
-    xMinusMove();      
-  }                                                          
+ byte b;
+ if(Serial.available()){
+     b= Serial.read();          
+ }
+ if(b == 'w'){
+  yPlusMove();              
+ }
+ if(b == 's'){
+  yMinusMove();
+ }
+ if(b == 'a'){
+  xMinusMove();
+ }
+ if(b == 'd'){
+  xPlusMove();
+ }
 }
 void Motor1TurnLeft(){
  digitalWrite(IN1_1,LOW);
